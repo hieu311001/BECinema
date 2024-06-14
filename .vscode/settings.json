@@ -1,0 +1,26 @@
+{
+  "[typescript]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never",
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+  ],
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+  },
+  "sonarlint.connectedMode.project": {
+    "projectKey": "nestjs-base"
+  }
+}
