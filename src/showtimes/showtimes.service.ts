@@ -207,7 +207,7 @@ export class ShowtimesService extends CommonService<Showtime> {
     }
     const [total, items] = await Promise.all([
       this.showtimeModel.countDocuments(conditions),
-      this.showtimeModel.find(conditions, null, options).sort(sort).select("-seats")
+      this.showtimeModel.find(conditions, null, options).sort().select("-seats")
     ]);
     return { items, total };
   }
@@ -226,7 +226,7 @@ export class ShowtimesService extends CommonService<Showtime> {
     const result = await this.showtimeModel.find(filter)
       .skip(offset)
       .limit(defaultLimit)
-      .sort(sort)
+      .sort()
       .select("-seats")
       .populate(population)
       .exec();
@@ -265,7 +265,7 @@ export class ShowtimesService extends CommonService<Showtime> {
     const result = await this.showtimeModel.find(conditions)
       .skip(offset)
       .limit(defaultLimit)
-      .sort(sort)
+      .sort()
       .select("-seats")
       .populate(population)
       .exec();
