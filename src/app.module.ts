@@ -16,6 +16,7 @@ import { PermissionsModule } from './permissions/permissions.module';
 import { RolesModule } from './roles/roles.module';
 import { DatabasesModule } from './databases/databases.module';
 import { ShowtimesModule } from './showtimes/showtimes.module';
+import { PromotionsModule } from './promotions/promotions.module';
 
 
 @Module({
@@ -47,7 +48,8 @@ import { ShowtimesModule } from './showtimes/showtimes.module';
     PermissionsModule,
     RolesModule,
     DatabasesModule,
-    ShowtimesModule
+    ShowtimesModule,
+    PromotionsModule
   ],
   controllers: [AppController],
   providers: [AppService,

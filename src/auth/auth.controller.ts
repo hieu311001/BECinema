@@ -6,6 +6,7 @@ import { LocalAuthGuard } from "./local-auth.guard";
 import { Request, Response } from "express";
 import { IUser } from "src/users/users.interface";
 import { RolesService } from "src/roles/roles.service";
+import { AuthGuard } from "@nestjs/passport";
 
 @Controller('auth') 
 export class AuthController {
@@ -40,6 +41,27 @@ export class AuthController {
    user.permissions = temp.permissions;
    return { user };
  }
+
+ @Get('/google')
+ @UseGuards(AuthGuard('google'))
+  async googlelogin() {
+
+  }
+
+  @Get('/google/callback')
+  @UseGuards(AuthGuard('google'))
+  async callback(@Req() req,
+  @Res({passthrough: true}) response: Response,) {
+    const jwt = await this.authService.login(req.user, response);
+    response.set('authorization', jwt.access_token);
+    response.json(req.user);
+  }
+
+  @Get('test123')
+  @UseGuards(AuthGuard('jwt'))
+  async test123(@Res() res) {
+    res.json('success');
+  }
 
  @Public()
  @ResponseMessage('Get user refresh token')
